@@ -25,13 +25,13 @@ Rust 是一种系统级编程语言，强调安全性、性能和并发。本项
 
 ## 目录结构说明
 designPattern/ 
-├── src/ │ 
-├── main.rs # 主程序入口文件 
-│ └── patterns/ # 各设计模式的实现目录 
-│ ├── creational/ # 创建型模式 
-│ ├── structural/ # 结构型模式 
-│ └── behavioral/ # 行为型模式 
-└── README.md # 项目说明文档
+├── src/ 
+    ├── main.rs # 主程序入口文件 
+    │ └── patterns/ # 各设计模式的实现目录 
+    │ ├── creational/ # 创建型模式 
+    │ ├── structural/ # 结构型模式 
+    │ └── behavioral/ # 行为型模式 
+    └── README.md # 项目说明文档
 
 每个设计模式都有一个单独的模块，并附有清晰的注释和使用示例。
 

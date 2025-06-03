@@ -14,7 +14,7 @@ mod creational;
 mod specific;
 mod structural;
 
-
+use crate::behavioral::state::{VotingMachine};
 use creational::factory_method::{Button, ButtonFactory, WindowsButtonFactory, WebButtonFactory};
 use crate::prototype::{Circle, Prototype};
 use crate::behavioral::command::{Command, Light, LightOnCommand, RemoteControl};
@@ -46,20 +46,35 @@ use crate::strategy::{ConcreteStrategyA, ConcreteStrategyB, Context};
 use crate::template_method::{AbstractClass, ConcreteClassA, ConcreteClassB};
 
 fn main() {
-    //工厂方法模式-------------------------------------------------------
-//根据平台选择工厂
-    let os = "windows";
-    let factory: Box<dyn ButtonFactory> = match os {
-        "windows" => Box::new(WindowsButtonFactory),
-        "web" => Box::new(WebButtonFactory),
-        _ => panic!("unknown os"),
-    };
-    //通过工厂方法创建按钮
-    let button = factory.create_button();
+    //状态模式---------------------------------------------------
+    // 创建投票机器
+    let mut machine = VotingMachine::new();
 
-    //使用按钮
-    button.render();
-    button.on_click();
+    // 检查初始状态
+    machine.status();
+
+    // 投票
+    machine.vote();
+
+    // 再次投票，应该提示已经投票
+    machine.vote();
+
+    machine.status();
+
+    //工厂方法模式-------------------------------------------------------
+    //根据平台选择工厂
+    // let os = "windows";
+    // let factory: Box<dyn ButtonFactory> = match os {
+    //     "windows" => Box::new(WindowsButtonFactory),
+    //     "web" => Box::new(WebButtonFactory),
+    //     _ => panic!("unknown os"),
+    // };
+    // //通过工厂方法创建按钮
+    // let button = factory.create_button();
+
+    // //使用按钮
+    // button.render();
+    // button.on_click();
 
     //原型模式----------------------------------------------------------
     // 创建一个原型对象

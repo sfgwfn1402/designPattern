@@ -1,2 +1,7 @@
 pub mod command;
 pub mod state;
+pub mod visitor;
+pub mod observer;
+pub mod responsibility_chain;
+pub mod strategy;
+pub mod template_method;

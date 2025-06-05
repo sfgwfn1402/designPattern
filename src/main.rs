@@ -1,25 +1,17 @@
-mod proxy;
-mod responsibility_chain;
-mod strategy;
-mod template_method;
-mod phantom_data;
-mod panic_result;
-mod observer;
 mod behavioral;
-mod prototype;
 mod creational;
 mod specific;
 mod structural;
 
 use crate::behavioral::state::{VotingMachine};
 use creational::factory_method::{Button, ButtonFactory, WindowsButtonFactory, WebButtonFactory};
-use crate::prototype::{Circle, Prototype};
+use crate::creational::prototype::{Circle, Prototype};
 use crate::behavioral::command::{Command, Light, LightOnCommand, RemoteControl};
-use crate::observer::{Subject, Observer, ConcreteObserver};
+use crate::behavioral::observer::{Subject, Observer, ConcreteObserver};
 use crate::structural::decorator::{Component, ConcreteComponent, ConcreteDecoratorA};
-use crate::panic_result::{divide, safe_divide};
+use crate::specific::panic_result::{divide, safe_divide};
 use crate::creational::builder_default::{Config, ConfigBuilder};
-use crate::phantom_data::MyBox2;
+use crate::specific::phantom_data::MyBox2;
 use crate::specific::drop::MyResource;
 use crate::specific::interior_mutability::{MyData, SharedCounter, ReadWriteData};
 use std::sync::Arc;
@@ -38,9 +30,9 @@ use crate::creational::singleton::Singleton;
 use crate::structural::adapter::{LegacyRectangle, RectangleAdapter, Shape};
 use crate::structural::flyweight::FlyweightFactory;
 // use crate::proxy::{Proxy, RealSubject, Subject};
-use crate::responsibility_chain::{ConcreteHandlerA, ConcreteHandlerB, Handler, Request};
-use crate::strategy::{ConcreteStrategyA, ConcreteStrategyB, Context};
-use crate::template_method::{AbstractClass, ConcreteClassA, ConcreteClassB};
+use crate::behavioral::responsibility_chain::{ConcreteHandlerA, ConcreteHandlerB, Handler, Request};
+use crate::behavioral::strategy::{ConcreteStrategyA, ConcreteStrategyB, Context};
+use crate::behavioral::template_method::{AbstractClass, ConcreteClassA, ConcreteClassB};
 
 fn main() {
     //状态模式---------------------------------------------------

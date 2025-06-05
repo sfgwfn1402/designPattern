@@ -3,8 +3,10 @@ mod creational;
 mod specific;
 mod structural;
 
+use crate::behavioral::memento::{Editor, Memento};
+use crate::behavioral::iterator::MyIterator;
 use crate::behavioral::state::{VotingMachine};
-use creational::factory_method::{Button, ButtonFactory, WindowsButtonFactory, WebButtonFactory};
+use crate::creational::factory_method::{Button, ButtonFactory, WindowsButtonFactory, WebButtonFactory};
 use crate::creational::prototype::{Circle, Prototype};
 use crate::behavioral::command::{Command, Light, LightOnCommand, RemoteControl};
 use crate::behavioral::observer::{Subject, Observer, ConcreteObserver};
@@ -35,20 +37,42 @@ use crate::behavioral::strategy::{ConcreteStrategyA, ConcreteStrategyB, Context}
 use crate::behavioral::template_method::{AbstractClass, ConcreteClassA, ConcreteClassB};
 
 fn main() {
+    //备忘录模式---------------------------------------------------
+    let mut editor = Editor::new();
+
+    editor.set_content("第一次输入");
+    println!("当前内容: {}", editor.get_content());
+
+    // 保存当前状态
+    let memento = editor.save();
+
+    editor.set_content("第二次输入");
+    println!("当前内容: {}", editor.get_content());
+
+    // 恢复到之前的状态
+    editor.restore(&memento);
+    println!("恢复到之前的状态: {}", editor.get_content());
+
+    //迭代器模式---------------------------------------------------
+    // let numbers = [1, 2, 3, 4, 5];
+    // let mut iter = MyIterator::new(&numbers);
+    // while let Some(number) = iter.next() {
+    //      println!("Number: {}", number);
+    // }
     //状态模式---------------------------------------------------
     // 创建投票机器
-    let mut machine = VotingMachine::new();
+    // let mut machine = VotingMachine::new();
 
-    // 检查初始状态
-    machine.status();
+    // // 检查初始状态
+    // machine.status();
 
-    // 投票
-    machine.vote();
+    // // 投票
+    // machine.vote();
 
-    // 再次投票，应该提示已经投票
-    machine.vote();
+    // // 再次投票，应该提示已经投票
+    // machine.vote();
 
-    machine.status();
+    // machine.status();
 
     //工厂方法模式-------------------------------------------------------
     //根据平台选择工厂

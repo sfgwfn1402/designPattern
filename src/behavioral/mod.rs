@@ -5,3 +5,5 @@ pub mod observer;
 pub mod responsibility_chain;
 pub mod strategy;
 pub mod template_method;
+pub mod iterator;
+pub mod memento;
